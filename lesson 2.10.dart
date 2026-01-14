@@ -34,7 +34,7 @@ class Cost implements Filter {
 
   @override
   bool apply(Product prod) {
-    return prod.cost = filter;
+    return prod.cost == filter;
   }
 }
 
@@ -45,7 +45,7 @@ class Value implements Filter {
 
   @override
   bool apply(Product prod) {
-    return prod.value  filter;
+    return prod.value ==  filter;
   }
 }
 
@@ -67,7 +67,7 @@ void main() {
 }
 
 void applyFilter(String list, Filter filter) {
-  for (String str in list.split(n)) {
+  for (String str in list.split('\n')) {
     print(str.split(','));
     
     var strSplit = str.split(',');
