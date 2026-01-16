@@ -22,12 +22,23 @@ class SurfApp extends StatelessWidget {
 class HomePageStateless extends StatelessWidget {
   final String title;
   int _counter = 0;
+  int _decrementCount = 0;
+  int _incrementCount = 0;
 
   HomePageStateless({required this.title, Key? key}) : super(key: key);
 
   void _incrementCounter() {
+    _incrementCount += 1;
     _counter += 1;
     print('new value: $_counter');
+    print('increment pressed $_incrementCount times'
+  }
+
+  void _decrementCounter() {
+    _decrementCount += 1;
+    if (_counter >= 0) => _counter -=1;
+    print('new value: $_counter');
+    print('decrement pressed $_decrementCount times')
   }
 
   @override
@@ -58,6 +69,11 @@ class HomePageStateless extends StatelessWidget {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _decrementCounter,
+        tooltip: 'Decrement',
+        child: const Icon(Icons.remove),
       ),
     );
   }
