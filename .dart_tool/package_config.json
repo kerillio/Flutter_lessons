@@ -56,22 +56,10 @@
       "languageVersion": "3.8"
     },
     {
-      "name": "flutter_localizations",
-      "rootUri": "file:///C:/Users/keril/AppData/Local/flutter/packages/flutter_localizations",
-      "packageUri": "lib/",
-      "languageVersion": "3.8"
-    },
-    {
       "name": "flutter_test",
       "rootUri": "file:///C:/Users/keril/AppData/Local/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.8"
-    },
-    {
-      "name": "intl",
-      "rootUri": "file:///C:/Users/keril/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.20.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
     },
     {
       "name": "leak_tracker",
@@ -176,15 +164,15 @@
       "languageVersion": "3.5"
     },
     {
-      "name": "Flutter_app",
+      "name": "flutter_lessons",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.10.4",
+  "generatorVersion": "3.10.7",
   "flutterRoot": "file:///C:/Users/keril/AppData/Local/flutter",
-  "flutterVersion": "3.38.5",
+  "flutterVersion": "3.38.7",
   "pubCache": "file:///C:/Users/keril/AppData/Local/Pub/Cache"
 }
