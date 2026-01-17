@@ -31,14 +31,14 @@ class HomePageStateless extends StatelessWidget {
     _incrementCount += 1;
     _counter += 1;
     print('new value: $_counter');
-    print('increment pressed $_incrementCount times'
+    print('increment pressed $_incrementCount times');
   }
 
   void _decrementCounter() {
     _decrementCount += 1;
-    if (_counter >= 0) => _counter -=1;
+    if (_counter >= 0) { _counter -=1;}
     print('new value: $_counter');
-    print('decrement pressed $_decrementCount times')
+    print('decrement pressed $_decrementCount times');
   }
 
   @override
@@ -60,7 +60,7 @@ class HomePageStateless extends StatelessWidget {
               style: Theme
                   .of(context)
                   .textTheme
-                  .headline4,
+                  .headlineLarge
             ),
           ],
         ),
@@ -70,11 +70,11 @@ class HomePageStateless extends StatelessWidget {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         onPressed: _decrementCounter,
         tooltip: 'Decrement',
         child: const Icon(Icons.remove),
-      ),
+      ),*/
     );
   }
 }

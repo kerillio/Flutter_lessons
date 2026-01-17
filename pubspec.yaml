@@ -31,8 +31,8 @@ flutter:
     enable-swift-package-manager: true
 
   assets:  # Lists assets, such as image files
-    - images/a_dot_burr.png
-    - images/a_dot_ham.png
+    #- images/a_dot_burr.png
+    #- images/a_dot_ham.png
 
   licenses: # Lists additional license files to be bundled with the app
     - assets/my_license.txt
