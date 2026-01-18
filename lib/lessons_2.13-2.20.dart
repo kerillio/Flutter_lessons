@@ -1,106 +1,88 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
+
 void main() {
-  runApp(const SurfApp());
+  runApp(const MyApp());
 }
 
-class SurfApp extends StatelessWidget {
-  const SurfApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Buttons Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePageStateful(title: 'Stateful page'),
+      home:  HomePage(),
     );
   }
 }
 
-class HomePageStateful extends StatefulWidget {
-  final String title;
-
-  const HomePageStateful({required this.title, Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
 
   @override
-  State<HomePageStateful> createState() => _HomePageStatefulState();
+  State<HomePage> createState() =>
+      _HomePage();
 }
 
-class _HomePageStatefulState extends State<HomePageStateful> {
-  int _counter = 0;
-  int _incCounter = 0;
-  int _decCounter = 0;
+class _HomePage extends State<HomePage> with TickerProviderStateMixin{
 
-  void _incrementCounter() {
-    setState(() {
-      _incCounter++;
-      _counter++;
-    });
-    print('new value: $_counter');
-  }
+    late final _controller = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this);
+    late final Animation<double> animation = CurvedAnimation(
+        parent: _controller,
+        curve: Easing.standard);
 
-  void _decrementCounter() {
-      setState(() {
-        _decCounter++;
-        _counter>0 ? _counter--: '';
-      });
-      print('new value: $_counter');
-  }
+
+
+  bool selected = false;
+  double topPos = 10.0;
 
   @override
   Widget build(BuildContext context) {
     print('build() method called');
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Gesture demo'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineLarge,
-            ),
-          ],
+        child: Positioned(
+            top: topPos,
+            child: Stack(
+            children: [
+              RotationTransition(
+                turns: animation,
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 1),
+                  width: selected ? 100 : 200,
+                  height: selected ? 200 : 100,
+                  child: Positioned.fill(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selected = !selected;
+                        });
+                      },
+                      onLongPress: () {
+                        _controller.repeat(count: 1);
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 4),
+                        color: selected ? Colors.amber : Colors.deepOrange,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
-      floatingActionButton:
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-              Text('Pushed $_incCounter times'),
-              FloatingActionButton(
-                onPressed: _incrementCounter,
-                tooltip: 'Increment',
-                child: const Icon(Icons.add),
-              ),
-              ]),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-              Text('Pushed $_decCounter times'),
-              FloatingActionButton(
-                onPressed: _decrementCounter,
-                tooltip: 'Decrement',
-                child: const Icon(Icons.remove),
-              ),
-              ],
-            )
-
-          ],
-        ),
     );
   }
 }
